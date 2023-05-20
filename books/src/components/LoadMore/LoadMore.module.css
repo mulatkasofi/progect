@@ -1,0 +1,23 @@
+.loadMore {
+    width: 448px;
+    height: 56px;
+    background: #313037;
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    margin-top: 59px;
+    border: none;
+    transition: 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+.div{
+    display: flex;
+    justify-content: center;
+}

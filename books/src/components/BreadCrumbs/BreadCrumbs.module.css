@@ -1,0 +1,32 @@
+.list {
+  display: flex;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listItem::after {
+  content: "/";
+  color: var(--text-secondary);
+  display: block;
+  margin: 0 8px;
+}
+
+.link {
+  color: var(--text-secondary);
+}
+
+.listItem:last-child::after {
+  display: none;
+}
+
+.listItem > a {
+  text-decoration: none;
+}
+.img{
+  margin-top: 77px;
+}

@@ -1,0 +1,58 @@
+{
+  "name": "books",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/lodash.shuffle": "^4.2.7",
+    "@types/node": "^16.18.25",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "antd": "^5.5.0",
+    "classnames": "^2.3.2",
+    "clsx": "^1.2.1",
+    "dotenv": "^16.0.3",
+    "lodash.shuffle": "^4.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-paginate": "^8.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.11.0",
+    "react-scripts": "^4.0.3",
+    "typescript": "^4.9.5",
+    "uikit": "^3.16.16-dev.7b3ba4436",
+    "web-vitals": "^2.1.4",
+    "web-vitals-reporter": "^1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/uikit": "^3.14.0"
+  }
+}

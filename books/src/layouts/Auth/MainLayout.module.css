@@ -1,0 +1,17 @@
+
+
+
+
+.wrapper {
+  max-width: 1120px;
+ margin: 0 auto;
+
+}
+
+
+
+.footer {
+  height: 100px;
+  box-sizing: border-box;
+  padding: 12px 0;
+}

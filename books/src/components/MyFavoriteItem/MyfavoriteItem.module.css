@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+.cardBackground {
+    background-color: #D7E4FD;
+    text-align: center;
+height: 192.18130493164062px;
+    width: 256px;
+    margin-bottom: 48.73px;
+
+}
+
+.title {
+    width: 335px;
+  
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #313037;
+    margin-bottom: 8px;
+
+}
+
+.text {
+    height: 24px;
+    font-family: 'Helios';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #A8A8A8;
+    margin: 0;
+}
+
+.price {
+    width: 53px;
+    height: 32px;
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #313037;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+   
+}
+
+.img {
+height: 191.45608520507812px;
+    width: 163.89801025390625px;
+
+}
+.all{
+    display: flex;
+    border-bottom: 1px solid #E7E7E7;
+    justify-content: space-between;
+    margin-top: 48px;
+}
+.information{
+    display: flex;
+    flex-direction: column;
+  margin-left: 32px;
+}
+.delete{
+    border: none;
+    background-color: white;
+  
+}
+.display{
+    display: flex;
+    
+   
+}
+.rating{
+    display: flex;
+    align-items: center;
+}
+
