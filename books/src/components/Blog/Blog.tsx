@@ -26,23 +26,25 @@ import { getSearch } from "../../api/search";
 const Blog: React.FC = () => {
   const [cards, setCard] = useState<Books[]>([]);
      const dispatch = useDispatch<AppDispatch>();
-
+    const {page}=useSelector(getSlice)
   
   // const [num, setNum] = useState(12);
-  const { id } = useParams();
+
 
  const handleIncreace=()=>{
   dispatch(increaseOffset())
- 
+
  }
   useDidUpdate(() => {
-    getSearch(1).then((data) => {
+    getSearch(page).then((data) => {
       console.log(data);
       
       setCard(data.books);
       setList(data.books);
     });
   }, []);
+
+
 
   
 
