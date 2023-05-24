@@ -10,7 +10,6 @@ const SignUpAll: React.FC = () => {
   };
   const tabs: TabsItem[] = [
     { label: "Sign in", value: "SignIn" },
-    { label: "Sign up", value: "SignUp" },
   ];
   return (
     <div className={styles.form}>

@@ -1,6 +1,6 @@
 import img1 from "../../../img/image 9.png";
 import img2 from "../../../img/image 9 (1).png";
-import { Books, BooksAll } from "../store/books/books.types";
+import { Book, Books, BooksAll } from "../store/books/books.types";
 import { log } from "console";
 
 export const getBooks = async (): Promise<BooksAll> => {

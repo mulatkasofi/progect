@@ -1,47 +1,40 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  margin-bottom: 12px;
 }
 
 .label {
-  height: 32px;
-  font-weight: 700;
   font-size: 16px;
-  line-height: 32px;
-  margin-bottom: 4px;
-}
-
-.label.error {
-  color: var(--text-error);
+  font-weight: bold;
+  margin-bottom: 6px;
 }
 
 .input {
+  font-size: 16px;
+  border: 1px solid #888;
   border-radius: 4px;
-  border: 1px solid #E7E7E7;
-  padding: 8px 12px;
-  font-size: 18px;
-  background-color: var(--post-bg-color);
-  color: var(--text-primary);
-  height: 56px;
-}
-
-.input.error {
-  border-color: var(--input-error-border-color);
+  padding: 6px 8px;
+  background-color: #fff;
+  transition: 0.3s;
+  color: #333;
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--input-focus-border-color);
+  border-color: #333;
 }
 
-.description {
-  margin-top: 6px;
-  margin-left: 8px;
+.inputError,
+.inputError:focus {
+  border-color: red;
+}
+
+.helpText {
+  margin: 6px 0;
   font-size: 12px;
-  color: var(--text-secondary);
+  color: #333;
 }
 
-.description.error {
-  color: var(--text-error);
+.helpTextError {
+  color: red;
 }

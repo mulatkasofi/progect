@@ -1,3 +1,5 @@
+import { FormValues } from "../../components/SignUp/SignUp"
+
 export interface Books {
             "title": string,
             "subtitle": string,
@@ -27,7 +29,9 @@ export interface Books {
     'count':number
     'pdf':PDF
     "totalPrice":string
-
+ 'showmore':boolean
+            "page": number
+               "books":Book[],
     
   }
   export interface PDF{
@@ -38,13 +42,16 @@ export interface Books {
   export interface BooksAll{
     "total": string,
      "page": number
-    "books":Books[],
+    "books":Book[],
   }
   export interface State {
     cardOne:Book| null;
-    card: Books[];
+    card: Book[];
     searchValue: string;
     basket:Book[]
     myfavorites:Book[]
-   page:number
+    page:number
+    user:FormValues[]
+    query:string,
+    newBooks:Book[]
   }

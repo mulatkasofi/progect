@@ -4,37 +4,49 @@ import cn from "classnames";
 import styles from "./Input.module.css";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   error?: boolean;
-  description?: string;
+  helpText?: string;
+  classNames?: {
+    wrapper?: string;
+  };
 }
 
 const Input: React.FC<InputProps> = ({
+  id,
+  type,
+  name,
+  value,
+  placeholder,
+  onChange,
   label,
-  error,
-  description,
-  ...inputProps
+  error = false,
+  helpText,
+  classNames,
 }) => {
+  console.log("render input: ", name);
   return (
-    <div className={styles.wrapper}>
-      <label
-        className={cn(styles.label, { [styles.error]: error })}
-        htmlFor={inputProps.id}
-      >
-        {label}
-      </label>
+    <div className={cn(styles.wrapper, classNames?.wrapper)}>
+      {!!label && (
+        <label className={styles.label} htmlFor={id}>
+          {label}
+        </label>
+      )}
       <input
-        {...inputProps}
-        className={cn(
-          styles.input,
-          { [styles.error]: error },
-          inputProps.className
-        )}
+        id={id}
+        type={type}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+        className={cn(styles.input, { [styles.inputError]: error })}
       />
-      {!!description && (
-        <p className={cn(styles.description, { [styles.error]: error })}>
-          {description}
-        </p>
+      {!!helpText && (
+        <span
+          className={cn(styles.helpText, { [styles.helpTextError]: error })}
+        >
+          {helpText}
+        </span>
       )}
     </div>
   );

@@ -1,123 +1,123 @@
-import React, { useState } from "react";
-import { FailureResponse, SignUpUserInfo, signUp } from "../../api/auth/signUp";
-import styles from "./SignUp.module.css";
-import { Errors, useForm } from "../../hooks/useForm";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
 import Input from "../Input/Input";
-import Title from "../Title/Title";
-import Tabs, { TabsItem } from "../Tabs/Tabs";
-import ActivateUser from "../../pages/ActivateUserPage/ActivateUser";
-import SignUpPage from "../../pages/SignUpPage/SignUpPage";
-const initialValues: SignUpUserInfo = {
-  username: "",
-  password: "",
+
+import styles from "./SignUp.module.css";
+import { validateFormBeforeSubmit } from "./helpers/validateFormBeforeSubmit";
+import { useDidUpdate } from "../../hooks/useDidUpdate";
+import { useDispatch, useSelector } from "react-redux";
+import { getAddUser, getSlice } from "../../store/books/books.selectors";
+import { addUser } from "../../store/books/books.reducer";
+import BookOne from "../Card/Card";
+
+export interface FormValues {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface FormErrors {
+  name?: string;
+  email?: string;
+  password?: string;
+}
+
+const initialValues = {
+  name: "",
   email: "",
-  confirmpassword: ""
+  password: "",
+  confirmPassword: "",
 };
-
-const signUpValidation = (values: SignUpUserInfo) => {
-  const errors: Errors<SignUpUserInfo> = {};
-
-  if (!values.username) {
-    errors.username = "required field";
-  }
-
-  if (!values.email) {
-    errors.email = "required field";
-  }
-
-  if (!values.password) {
-    errors.password = "required field";
-  }
-   if (!values.confirmpassword) {
-     errors.confirmpassword = "required field";
-   }
-
-  return errors;
+const defaultUser = {
+  name: "Sofi",
+  email: "1@gmail.com",
+  password: "1111",
 };
+const inputClassnames = { wrapper: styles.inputWrapper };
 
-const SignUp: React.FC = () => {
-  const [showInfoMessage, setSHowInfoMessage] = useState(false);
+const SignUp = () => {
+  const [values, setValues] = useState<FormValues>(initialValues);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const dispatch = useDispatch();
+  const user = useSelector(getAddUser);
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
 
-  const { values, errors, setErrors, handleChange, handleSubmit } =
-    useForm<SignUpUserInfo>({
-      initialValues,
-      validation: signUpValidation,
-      onSubmit: (values) => {
-        signUp(values).then((res) => {
-          console.log(res);
+    setValues((prevValues) => ({ ...prevValues, [name]: value }));
+  }, []);
 
-          if ((res as FailureResponse).errors) {
-            setErrors(
-              Object.fromEntries(
-                Object.entries((res as FailureResponse).errors).map(
-                  ([name, error]) => [name, error.join(",")]
-                )
-              )
-            );
-          } else {
-            setErrors({});
-            setSHowInfoMessage(true);
-          }
-        });
-      },
-    });
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-  if (showInfoMessage) {
-    return <h2>message sent successfully, check your email</h2>;
-  }
+    const errors = validateFormBeforeSubmit(values,defaultUser);
 
+    if (errors) {
+      setErrors(errors);
+    } else {
+      console.log(values);
+      
 
+      setErrors({});
+      setValues(initialValues);
+    }
+  };
+
+  useEffect(() => {
+    const userFromStorage = localStorage.getItem("user");
+    if (userFromStorage===null) {
+     localStorage.setItem("user",JSON.stringify(defaultUser));
+    }
+  }, []);
+
+  
 
   return (
-    <>
-      <Input
-        label="Name"
-        id="username"
-        name="username"
-        value={values.username}
-        error={!!errors.username}
-        description={!!errors.username ? errors.username : ""}
-        type="text"
-        onChange={handleChange}
-        placeholder="Your name"
-      />
-      <Input
-        label="Email"
-        id="email"
-        name="email"
-        value={values.email}
-        error={!!errors.email}
-        description={!!errors.email ? errors.email : ""}
-        type="text"
-        onChange={handleChange}
-        placeholder="Your email"
-      />
-      <Input
-        label="Password"
-        id="password"
-        name="password"
-        value={values.password}
-        error={!!errors.password}
-        description={!!errors.password ? errors.password : ""}
-        type="password"
-        onChange={handleChange}
-        placeholder="Your password"
-      />
-      <Input
-        label="Confirm password"
-        id="confirmpassword"
-        name="confirmpassword"
-        value={values.confirmpassword}
-        error={!!errors.confirmpassword}
-        description={!!errors.confirmpassword ? errors.confirmpassword : ""}
-        type="confirmpassword"
-        onChange={handleChange}
-        placeholder="Confirm password"
-      />
-      <button type="button" onClick={handleSubmit} className={styles.button}>
-        Submit
-      </button>
-    </>
+    <div className={styles.formWrapper}>
+      <form onSubmit={handleSubmit}>
+        <Input
+          classNames={inputClassnames}
+          label="Name"
+          type="text"
+          name="name"
+          onChange={handleChange}
+          value={values.name}
+          error={!!errors.name}
+          helpText={errors.name}
+        />
+        <Input
+          classNames={inputClassnames}
+          label="Email"
+          type="email"
+          name="email"
+          onChange={handleChange}
+          value={values.email}
+          error={!!errors.email}
+          helpText={errors.email}
+        />
+        <Input
+          classNames={inputClassnames}
+          label="Password"
+          type="password"
+          name="password"
+          onChange={handleChange}
+          value={values.password}
+          error={!!errors.password}
+          helpText={errors.password}
+        />
+        <Input
+          classNames={inputClassnames}
+          label="Confirm password"
+          type="password"
+          name="confirmPassword"
+          onChange={handleChange}
+          value={values.confirmPassword}
+        />
+        <button className={styles.button} type="submit">
+          Sign Up
+        </button>
+      </form>
+    </div>
   );
 };
 

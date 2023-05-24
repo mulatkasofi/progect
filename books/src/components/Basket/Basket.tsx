@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   addBooks,
+  resetBaskets,
   resetBook,
   setBook,
   setList,
@@ -13,6 +14,7 @@ import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 import Title from "../Title/Title";
 import { Book } from "../../store/books/books.types";
 import { useDidUpdate } from "../../hooks/useDidUpdate";
+import styles from './Basket.module.css'
 
 const Basket: React.FC = () => {
   const dispatch = useDispatch();
@@ -25,7 +27,6 @@ const Basket: React.FC = () => {
   }, []);
 
   useDidUpdate(() => {
-
     localStorage.setItem("cards", JSON.stringify(cart));
   }, [cart]);
 
@@ -34,7 +35,9 @@ const Basket: React.FC = () => {
       link: "/",
     },
   ];
-
+const handleDelete=()=>{
+  dispatch(resetBaskets())
+}
   return (
     <div>
       <BreadCrumbs breadcrumbs={breadcrumbs}></BreadCrumbs>
@@ -42,7 +45,13 @@ const Basket: React.FC = () => {
       {cart?.map((post, index) => (
         <BasketItem baskets={post} index={index} key={post.isbn13}></BasketItem>
       ))}
-      {totalPrice}
+      <div className={styles.price}>
+      <div className={styles.info}>
+        <p className={styles.total}>Total:</p>
+        <p className={styles.totalPrice}>${totalPrice.toFixed(2)}</p>
+      </div>
+      <button className={styles.check} onClick={handleDelete}>Check out</button>
+    </div>
     </div>
   );
 };

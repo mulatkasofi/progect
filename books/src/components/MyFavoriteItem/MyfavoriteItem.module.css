@@ -80,5 +80,6 @@ height: 191.45608520507812px;
 .rating{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 

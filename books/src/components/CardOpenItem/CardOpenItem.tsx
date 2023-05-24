@@ -6,12 +6,13 @@ import styles from "./CardOpenItem.module.css";
 import Title from "../Title/Title";
 import Stars from "../Stars/Stars";
 import more from "../../img/chevron-right.png";
-
+import heart2 from '../../img/heart 1 2 — копия.png'
 import {
   addBook,
   addBooks,
   addMyFavorites,
   addMyFavoritesAll,
+  resetMyFavorites,
   
 } from "../../store/books/books.reducer";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +21,7 @@ import {
   getAdd,
   getAddMyFavorites,
   getIsProductInBasket,
+  getIsProductInMyFavorite,
   getSlice,
 } from "../../store/books/books.selectors";
 import Tabs, { TabsItem } from "../Tabs/Tabs";
@@ -32,9 +34,12 @@ interface CardOpenItemProps {
 }
 // : { isbn13, url, title, image, price, authors, publisher, pages }
 const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
+
+  
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const itemInBasket = useSelector(getIsProductInBasket);
+   const itemInBMyfavorite = useSelector(getIsProductInMyFavorite);
   const cards = useSelector(getAdd);
   const myfavorites = useSelector(getAddMyFavorites);
 
@@ -56,6 +61,9 @@ const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
     dispatch(addBook({ ...post, count: 1}));
    
   };
+    useDidUpdate(() => {
+      localStorage.setItem("cards", JSON.stringify(cards));
+    }, [cards]);
   useDidUpdate(() => {
     localStorage.setItem("myfavorites", JSON.stringify(myfavorites));
   }, [myfavorites]);
@@ -64,6 +72,9 @@ const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
    dispatch(addMyFavorites(post));
    
   };
+  const handleResetMyFavorite=()=>{
+    dispatch(resetMyFavorites(post.isbn13))
+  }
   const [activeTab, setActiveTab] = useState("description");
 
   const handleTabClick = (tab: TabsItem) => {
@@ -83,14 +94,21 @@ const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
       <div className={styles.display}>
         <div className={styles.imgWrapper}>
           <img alt={post.title} src={post.image} className={styles.img} />
-          <button className={styles.heart} onClick={handleAddMyFavorite}>
-            <img src={heart} alt="" />
-          </button>
+          {itemInBMyfavorite ? (
+              <button className={styles.heart} onClick={handleResetMyFavorite}>
+                <img src={heart2} alt="" />
+              </button>
+    
+          ) : (
+            <button className={styles.heart} onClick={handleAddMyFavorite}>
+              <img src={heart} alt="" />
+            </button>
+          )}
         </div>
         <div className={styles.info}>
           <div className={styles.price}>
             <p className={styles.cost}>{post.price}</p>
-            <Stars></Stars>
+            <Stars post={post} ></Stars>
           </div>
           <div className={styles.information}>
             <div>

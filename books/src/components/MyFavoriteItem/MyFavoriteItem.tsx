@@ -43,7 +43,7 @@ const MyFavoritesItem: React.FC<MyFavoritesItemProps> = ({ myfavorites}) => {
             <p className={styles.text}>{myfavorites.subtitle}</p>
             <div className={styles.rating}>
               <p className={styles.price}>{myfavorites.price}</p>
-              <Stars></Stars>
+              <Stars post={myfavorites}></Stars>
             </div>
           </div>
         </div>

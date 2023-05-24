@@ -10,7 +10,7 @@ import { getBook } from "../../api/book";
 import { resetBook, setBook, setList } from "../../store/books/books.reducer";
 import shuffle from "lodash.shuffle";
 import BookOne from "../Card/Card";
-import { Books } from "../../store/books/books.types";
+import { Book, Books } from "../../store/books/books.types";
 import Subscribe from "../Subscribe/Subscribe";
 import Title from "../Title/Title";
 import faceBook from '../../img/facebook.png'
@@ -44,7 +44,7 @@ const CardOpen: React.FC = () => {
     },
   
   ];
-const [cards, setCard] = useState<Books[]>([]);
+const [cards, setCard] = useState<Book[]>([]);
 
 useEffect(() => {
   getBooks().then((data) => {
@@ -94,7 +94,7 @@ const handlePrev = () => {
         </div>
         <Subscribe title={"Subscribe to Newsletter"} />
         <div className={styles.title}>
-          <Title title={"Similar Books"}></Title>
+          <Title title={"New Books"}></Title>
           <div className={styles.navig}>
             <button className={styles.nav} onClick={handlePrev} disabled={start===0}>
               <img src={pre} alt="" />
@@ -108,9 +108,9 @@ const handlePrev = () => {
           {randomArticles.slice(start,end).map((book) => (
             <BookOne
               book={book}
+
               link={`/books/${book.isbn13}`}
-              key={book.isbn13}
-            ></BookOne>
+              key={book.isbn13}            ></BookOne>
           ))}
         </div>
       </div>

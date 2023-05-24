@@ -1,0 +1,26 @@
+.display {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    margin-top: 72px;
+    margin-bottom: 49px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.socialMedia {
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+    margin-bottom: 72px;
+
+}
+
+.nav {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}

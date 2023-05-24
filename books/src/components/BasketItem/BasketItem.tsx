@@ -20,20 +20,25 @@ export interface BasketProps {
 
 const BasketItem: React.FC<BasketProps> = ({ baskets}) => {
   const dispatch = useDispatch();
-
-  const pri = `$${(baskets.count * Number(baskets.price.slice(1))).toFixed(2)}`;
   const increment = () => {
+    console.log(baskets.count);
     dispatch(incrementCount(baskets.isbn13));
-
+    
   };
 
   const decremet = () => {
-    if (baskets.count == 0) {
+    if (baskets.count === 1) {
       dispatch(resetBasket(baskets.isbn13));
+      
+      
     } else {
       dispatch(decrementCount(baskets.isbn13));
+      console.log(baskets.count);
     }
   };
+
+  const pri = `$${(baskets.count * Number(baskets.price.slice(1))).toFixed(2)}`;
+
 
   const handleReset = () => {
     dispatch(resetBasket(baskets.isbn13));
