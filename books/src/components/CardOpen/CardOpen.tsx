@@ -7,24 +7,22 @@ import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 import CardOpenItem from "../CardOpenItem/CardOpenItem";
 import { getBooks } from "../../api/books";
 import { getBook } from "../../api/book";
-import { resetBook, setBook, setList } from "../../store/books/books.reducer";
+import { resetBook, setBook} from "../../store/books/books.reducer";
 import shuffle from "lodash.shuffle";
 import BookOne from "../Card/Card";
-import { Book, Books } from "../../store/books/books.types";
+import { Book } from "../../store/books/books.types";
 import Subscribe from "../Subscribe/Subscribe";
 import Title from "../Title/Title";
-import faceBook from '../../img/facebook.png'
+import faceBook from "../../img/facebook.png";
 import twitter from "../../img/twitter.png";
-import points from '../../img/more-horizontal.png'
-import pre from '../../img/Up 2.png'
-import next from '../../img/Up.png'
-import left from '../../img/Icon-Arrow-Left.png'
+import pre from "../../img/Up 2.png";
+import next from "../../img/Up.png";
+
 
 const CardOpen: React.FC = () => {
   const { id } = useParams();
-  const {title}=useParams()
   const dispatch = useDispatch();
-  const { card, cardOne } = useSelector(getSlice);
+  const { cardOne } = useSelector(getSlice);
 
   useEffect(() => {
     if (!id) return () => {};
@@ -36,45 +34,38 @@ const CardOpen: React.FC = () => {
     return () => dispatch(resetBook());
   }, [dispatch, id]);
 
-
   const breadcrumbs = [
     {
-      
       link: "/",
     },
-  
   ];
-const [cards, setCard] = useState<Book[]>([]);
+  const [cards, setCard] = useState<Book[]>([]);
 
-useEffect(() => {
-  getBooks().then((data) => {
-    setCard(data.books);
-    setList(data.books);
-  });
-}, []);
+  useEffect(() => {
+    getBooks().then((data) => {
+      setCard(data.books);
+    });
+  }, []);
 
-const randomArticles = useMemo(
-  () => shuffle(cards).slice(0, 10),
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [cards, id]
-);
+  const randomArticles = useMemo(
+    () => shuffle(cards).slice(0, 10),
+    [cards, id]
+  );
 
-const [[start,end],setSlide]=useState([0,3])
+  const [[start, end], setSlide] = useState([0, 3]);
 
-const handleNext=()=>{
-  if(end===10) return;
-  const nextStart=start+1;
-  const nextEnd = end + 1;
-  setSlide([nextStart,nextEnd])
-}
-const handlePrev = () => {
-  if (start === 0) return;
-  const nextStart = start - 1;
-  const nextEnd = end - 1;
-  setSlide([nextStart, nextEnd]);
-};
-
-
+  const handleNext = () => {
+    if (end === 10) return;
+    const nextStart = start + 1;
+    const nextEnd = end + 1;
+    setSlide([nextStart, nextEnd]);
+  };
+  const handlePrev = () => {
+    if (start === 0) return;
+    const nextStart = start - 1;
+    const nextEnd = end - 1;
+    setSlide([nextStart, nextEnd]);
+  };
 
   return (
     <>
@@ -90,27 +81,34 @@ const handlePrev = () => {
             {" "}
             <img src={twitter} alt="" />{" "}
           </NavLink>
-        
         </div>
         <Subscribe title={"Subscribe to Newsletter"} />
         <div className={styles.title}>
           <Title title={"New Books"}></Title>
           <div className={styles.navig}>
-            <button className={styles.nav} onClick={handlePrev} disabled={start===0}>
+            <button
+              className={styles.nav}
+              onClick={handlePrev}
+              disabled={start === 0}
+            >
               <img src={pre} alt="" />
             </button>
-            <button className={styles.nav} onClick={handleNext} disabled={end===10}>
+            <button
+              className={styles.nav}
+              onClick={handleNext}
+              disabled={end === 10}
+            >
               <img src={next} alt="" />
             </button>
           </div>
         </div>
         <div className={styles.display}>
-          {randomArticles.slice(start,end).map((book) => (
+          {randomArticles.slice(start, end).map((book) => (
             <BookOne
               book={book}
-
               link={`/books/${book.isbn13}`}
-              key={book.isbn13}            ></BookOne>
+              key={book.isbn13}
+            ></BookOne>
           ))}
         </div>
       </div>

@@ -1,42 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-.info{
-    display: flex;
-    justify-content: space-between;
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.info {
+  display: flex;
+  justify-content: end;
 }
-.price{
-    width: 256px;
-    
+.infoitems {
+  display: flex;
+  justify-content: space-between;
+  width: 256px;
 }
-.total{
-        width: 81px;
-        height: 60px;
-        font-family: 'Bebas Neue';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 40px;
-        line-height: 60px;
-        color: #313037;
+.price {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
 }
-.totalPrice{
-        width: 87px;
-        height: 60px;
-        font-family: 'Bebas Neue';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 40px;
-        line-height: 60px;
-        color: #313037;
+.total {
+  width: 81px;
+  height: 60px;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: #313037;
 }
-.check{
-    width: 256px;
-        height: 56px;
-        background-color: #313037;
-        font-family: 'Bebas Neue';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 24px;
-            letter-spacing: 0.05em;
-            color: #FFFFFF;
-            border: none;
-            cursor: pointer;
+.totalPrice {
+  width: 87px;
+  height: 60px;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: #313037;
+}
+.check {
+  width: 256px;
+  height: 56px;
+  background-color: #313037;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+.button {
+  display: flex;
+  justify-content: end;
 }

@@ -1,55 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-.subBlock{
-width: 1120px;
-height: 288px;
-background: #F4EEFD;
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.subBlock {
+  width: 1120px;
+  height: 288px;
+  background: #f4eefd;
 }
-.title{
-
-height: 60px;
-font-family: 'Bebas Neue';
-font-weight: 700;
-font-size: 40px;
-line-height: 60px;
-color: #313037;
-margin: 0;
-padding-top: 56px;
-
-
+.title {
+  height: 60px;
+  font-family: "Bebas Neue";
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: #313037;
+  margin: 0;
+  padding-top: 56px;
 }
-.info{
-    padding-left: 64px;
+.info {
+  padding-left: 64px;
 }
-.text{
-
-width: 691px;
-height: 28px;
-font-family: 'DIN Pro';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 28px;
-color: #A8A8A8;
+.text {
+  width: 691px;
+  height: 28px;
+  font-family: "DIN Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #a8a8a8;
 }
-.input{
-    width: 845px;
-    height: 56px;
-    padding-left: 24px;
-    border: none;
-    border-radius: 2px 0px 0px 2px;
+.input {
+  width: 845px;
+  height: 56px;
+  padding-left: 24px;
+  border: none;
+  border-radius: 2px 0px 0px 2px;
 }
-.subButton{
-    padding: 16px 40px;
-position: absolute;
-width: 147px;
-height: 56px;
-background: #313037;
-border-radius: 0px 2px 2px 0px;
-font-family: 'Bebas Neue';
-font-style: normal;
-font-weight: 700;
-font-size: 18px;
-letter-spacing: 0.05em;
-color: #FFFFFF;
-border: none;
+.subButton {
+  padding: 16px 40px;
+  position: absolute;
+  width: 147px;
+  height: 56px;
+  background: #313037;
+  border-radius: 0px 2px 2px 0px;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  border: none;
 }

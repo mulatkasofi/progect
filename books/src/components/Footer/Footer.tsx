@@ -1,7 +1,7 @@
-import React from "react";
+
 import styles from "./Footer.module.css";
 
-const Footer= () => {
+const Footer = () => {
   return (
     <div>
       <hr className={styles.line}></hr>
@@ -11,6 +11,6 @@ const Footer= () => {
       </div>
     </div>
   );
-  }
+};
 
 export default Footer;

@@ -5,11 +5,7 @@ import Basket from "../../components/Basket/Basket";
 
 const BasketPage = () => {
   return (
-    <MainLayout
-      header={<Header />}
-      content={<Basket   />}
-      footer={<Footer />}
-    />
+    <MainLayout header={<Header />} content={<Basket />} footer={<Footer />} />
   );
 };
 

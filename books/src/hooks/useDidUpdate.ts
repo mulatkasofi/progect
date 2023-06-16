@@ -10,4 +10,4 @@ export const useDidUpdate = (callback: () => void, deps?: unknown[]) => {
       isMounted.current = true;
     }
   }, deps);
-}
+};

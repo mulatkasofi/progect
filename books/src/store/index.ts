@@ -7,5 +7,4 @@ const store = configureStore({
     book: bookReducer,
   },
 });
-export type AppDispatch = typeof store.dispatch;
 export default store;

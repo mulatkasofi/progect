@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Book as IBook } from "../../store/books/books.types";
 import heart from "../../img/heart 1 2.png";
@@ -6,43 +6,38 @@ import styles from "./CardOpenItem.module.css";
 import Title from "../Title/Title";
 import Stars from "../Stars/Stars";
 import more from "../../img/chevron-right.png";
-import heart2 from '../../img/heart 1 2 — копия.png'
+import heart2 from "../../img/heart 1 2 — копия.png";
 import {
   addBook,
   addBooks,
   addMyFavorites,
   addMyFavoritesAll,
   resetMyFavorites,
-  
 } from "../../store/books/books.reducer";
 import { useDispatch, useSelector } from "react-redux";
-import books from "../../store/books/books.reducer";
 import {
   getAdd,
   getAddMyFavorites,
   getIsProductInBasket,
   getIsProductInMyFavorite,
-  getSlice,
+  getsetUser,
 } from "../../store/books/books.selectors";
 import Tabs, { TabsItem } from "../Tabs/Tabs";
-import Reviews from "../Reviews/Reviews";
 import { NavLink } from "react-router-dom";
 import { useDidUpdate } from "../../hooks/useDidUpdate";
+import PreviousNextMethods from "../Reviews/Reviews";
 
 interface CardOpenItemProps {
   post: IBook;
 }
-// : { isbn13, url, title, image, price, authors, publisher, pages }
 const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
-
-  
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const itemInBasket = useSelector(getIsProductInBasket);
-   const itemInBMyfavorite = useSelector(getIsProductInMyFavorite);
+  const itemInBMyfavorite = useSelector(getIsProductInMyFavorite);
   const cards = useSelector(getAdd);
   const myfavorites = useSelector(getAddMyFavorites);
-
+  const user = useSelector(getsetUser);
   useEffect(() => {
     const cards = JSON.parse(localStorage.getItem("cards") as string);
     if (cards) {
@@ -51,30 +46,30 @@ const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
   }, []);
 
   useEffect(() => {
-    const myfavorites = JSON.parse(localStorage.getItem("myfavorites") as string);
+    const myfavorites = JSON.parse(
+      localStorage.getItem("myfavorites") as string
+    );
     if (myfavorites) {
       dispatch(addMyFavoritesAll(myfavorites));
     }
   }, []);
 
   const handleAdd = () => {
-    dispatch(addBook({ ...post, count: 1}));
-   
+    dispatch(addBook({ ...post, count: 1 }));
   };
-    useDidUpdate(() => {
-      localStorage.setItem("cards", JSON.stringify(cards));
-    }, [cards]);
+  useDidUpdate(() => {
+    localStorage.setItem("cards", JSON.stringify(cards));
+  }, [cards]);
   useDidUpdate(() => {
     localStorage.setItem("myfavorites", JSON.stringify(myfavorites));
   }, [myfavorites]);
 
   const handleAddMyFavorite = () => {
-   dispatch(addMyFavorites(post));
-   
+    dispatch(addMyFavorites(post));
   };
-  const handleResetMyFavorite=()=>{
-    dispatch(resetMyFavorites(post.isbn13))
-  }
+  const handleResetMyFavorite = () => {
+    dispatch(resetMyFavorites(post.isbn13));
+  };
   const [activeTab, setActiveTab] = useState("description");
 
   const handleTabClick = (tab: TabsItem) => {
@@ -86,7 +81,6 @@ const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
     { label: "Reviews", value: "reviews" },
   ];
 
-  
   return (
     <>
       <Title title={post.title}></Title>
@@ -94,13 +88,23 @@ const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
       <div className={styles.display}>
         <div className={styles.imgWrapper}>
           <img alt={post.title} src={post.image} className={styles.img} />
-          {itemInBMyfavorite ? (
+          {user ? (
+            itemInBMyfavorite ? (
               <button className={styles.heart} onClick={handleResetMyFavorite}>
                 <img src={heart2} alt="" />
               </button>
-    
+            ) : (
+              <button className={styles.heart} onClick={handleAddMyFavorite}>
+                <img src={heart} alt="" />
+              </button>
+            )
           ) : (
-            <button className={styles.heart} onClick={handleAddMyFavorite}>
+            <button
+              className={styles.heart}
+              onClick={() =>
+                alert("Sign in your account to add book in favorites")
+              }
+            >
               <img src={heart} alt="" />
             </button>
           )}
@@ -108,7 +112,7 @@ const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
         <div className={styles.info}>
           <div className={styles.price}>
             <p className={styles.cost}>{post.price}</p>
-            <Stars post={post} ></Stars>
+            <Stars post={post}></Stars>
           </div>
           <div className={styles.information}>
             <div>
@@ -175,7 +179,7 @@ const CardOpenItems: React.FC<CardOpenItemProps> = ({ post }) => {
           <div className={styles.tabs}>{post.desc}</div>
         )}
         {activeTab === "authors" && <>{post.authors}</>}
-        {activeTab === "reviews" && <Reviews />}
+        {activeTab === "reviews" && <PreviousNextMethods />}
       </div>
     </>
   );

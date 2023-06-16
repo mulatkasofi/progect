@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.star {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+.all {
+  text-align: center;
+  height: 240px;
+  width: 352px;
+  border-radius: 5px;
+  border: 1px solid rgb(217, 215, 215);
+}
+.center {
+  margin: 0 auto;
+}
+.name {
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+}
+.review {
+  font-size: 14px;
+  padding: 0 10px 0 10px;
+}

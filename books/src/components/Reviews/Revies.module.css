@@ -1,0 +1,16 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: 140px;
+  right: 10px;
+}
+.button {
+  border: none;
+  background-color: white;
+  padding: 0;
+  border-radius: 50px;
+}
+.img {
+  border-radius: 50px;
+}

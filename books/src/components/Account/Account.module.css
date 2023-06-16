@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.profile {
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #313037;
+  margin-top: 48px;
+}
+.profileItems {
+  display: flex;
+  justify-content: space-between;
+}
+.newPassword {
+  display: flex;
+  justify-content: space-between;
+}
+.save {
+  width: 256.77px;
+  height: 56px;
+  background: #313037;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+.cancel {
+  width: 255.23px;
+  height: 56px;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: #313037;
+  border: 1px solid #e7e7e7;
+  background-color: white;
+  margin-left: 32px;
+  cursor: pointer;
+}
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.hr {
+  border: 1px solid #e7e7e7;
+  margin: 72px 0 48px 0;
+}
+.pass {
+  display: flex;
+}
+.show {
+  width: 50px;
+  height: 45px;
+  text-align: center;
+  position: relative;
+  background-color: #ffffff;
+  border: none;
+  right: 60px;
+  top: 47px;
+}
+.img {
+  width: 50px;
+  height: 45px;
+}

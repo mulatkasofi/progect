@@ -1,107 +1,105 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { State, Books, BooksAll, Book } from "./books.types";
-import { act } from "react-dom/test-utils";
-import { stat } from "fs";
-import { queries } from "@testing-library/react";
+import { State, Book } from "./books.types";
 
 
 const initialState: State = {
   card: [],
   searchValue: "",
   cardOne: null,
-  basket:[],
-  myfavorites:[],
-  page:1,
-  user:[],
-  query:'',
-  newBooks:[]
+  basket: [],
+  myfavorites: [],
+  page: 1,
+  user: null,
+  query: "",
+  newBooks: [],
 };
 const step = 1;
 
-const book= createSlice({
+const book = createSlice({
   name: "book",
   initialState,
   reducers: {
-
-       increaseOffset: (state) => {
+    increaseOffset: (state) => {
       state.page += step;
-      
-        
     },
-      decreaseOffset: (state) => {
+    decreaseOffset: (state) => {
       state.page -= step;
-      
-        
     },
     setList: (state, action: PayloadAction<Book[]>) => {
-      state.card = state.card.concat(action.payload);
+      state.card = [...state.card, ...action.payload];
+
+      console.log(state.card);
     },
-    
-    setQueryValue:(state, action: PayloadAction<string>)=>{
-      state.query=action.payload
+    setNewBook: (state, action: PayloadAction<Book[]>) => {
+      state.newBooks = action.payload;
     },
-    resetPage:(state)=>{
-      state.page=initialState.page
-    }, 
-    resetBooksAll:(state)=>{
-      state.newBooks=[]
-    } ,
+
+    setQueryValue: (state, action: PayloadAction<string>) => {
+      state.query = action.payload;
+    },
+    resetPage: (state) => {
+      state.page = initialState.page;
+    },
+
+    resetCard: (state) => {
+      state.card = [];
+    },
     setBook: (state, action: PayloadAction<Book>) => {
       state.cardOne = action.payload;
     },
     resetBook: (state) => {
       state.cardOne = null;
     },
-    resetBaskets:(state)=>{
-      state.basket=[]
+    resetBaskets: (state) => {
+      state.basket = [];
     },
     addBook: (state, action: PayloadAction<Book>) => {
       state.basket = [...state.basket, action.payload];
       console.log(state.basket);
-      
     },
     addMyFavorites: (state, action: PayloadAction<Book>) => {
       state.myfavorites = [...state.myfavorites, action.payload];
     },
-     addBooks: (state, action: PayloadAction<Book[]>) => {
-      state.basket=action.payload
-      
+    addBooks: (state, action: PayloadAction<Book[]>) => {
+      state.basket = action.payload;
     },
-     addMyFavoritesAll: (state, action: PayloadAction<Book[]>) => {
-      state.myfavorites=action.payload
+    addMyFavoritesAll: (state, action: PayloadAction<Book[]>) => {
+      state.myfavorites = action.payload;
     },
-      addUser: (state, action: PayloadAction<State['user']>) => {
-      state.user=action.payload
+    setUser: (state, action: PayloadAction<State["user"]>) => {
+      state.user = action.payload;
     },
-    resetBasket: (state, action: PayloadAction<Book['isbn13']>) => {
-       let post = state.basket.find((post) => post.isbn13===action.payload);
+    resetBasket: (state, action: PayloadAction<Book["isbn13"]>) => {
+      let post = state.basket.find((post) => post.isbn13 === action.payload);
       if (post) {
-        state.basket = state.basket.filter((product) => product.isbn13 !== action.payload);
+        state.basket = state.basket.filter(
+          (product) => product.isbn13 !== action.payload
+        );
       }
     },
-    resetMyFavorites: (state, action: PayloadAction<Book['isbn13']>) => {
-       let post = state.myfavorites.find((post) => post.isbn13===action.payload);
+    resetMyFavorites: (state, action: PayloadAction<Book["isbn13"]>) => {
+      let post = state.myfavorites.find(
+        (post) => post.isbn13 === action.payload
+      );
       if (post) {
-        state.myfavorites = state.myfavorites.filter((product) => product.isbn13 !== action.payload);
+        state.myfavorites = state.myfavorites.filter(
+          (product) => product.isbn13 !== action.payload
+        );
       }
     },
-    incrementCount:(state, action: PayloadAction<Book['isbn13']>)=>{
-       let post = state.basket.find((post) => post.isbn13===action.payload);
-       if(post){
-        post.count+=1
-       }
+    incrementCount: (state, action: PayloadAction<Book["isbn13"]>) => {
+      let post = state.basket.find((post) => post.isbn13 === action.payload);
+      if (post) {
+        post.count += 1;
+      }
     },
-     decrementCount:(state, action: PayloadAction<Book['isbn13']>)=>{
-       let post = state.basket.find((post) => post.isbn13===action.payload);
-       if(post ){
-        post.count-=1
-       }
+    decrementCount: (state, action: PayloadAction<Book["isbn13"]>) => {
+      let post = state.basket.find((post) => post.isbn13 === action.payload);
+      if (post) {
+        post.count -= 1;
+      }
     },
-
-  
-
-}
- 
+  },
 });
 
 export const {
@@ -115,15 +113,15 @@ export const {
   addMyFavorites,
   addMyFavoritesAll,
   increaseOffset,
-decreaseOffset,
+  decreaseOffset,
   incrementCount,
   decrementCount,
-  addUser,
+  setUser,
   resetBaskets,
   resetPage,
   setQueryValue,
-  resetBooksAll
-
+  resetCard,
+  setNewBook,
 } = book.actions;
- 
+
 export default book.reducer;

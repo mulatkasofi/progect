@@ -1,57 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-.card{
-    width: 352px;
-    height: 453px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 10px;
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.card {
+  width: 352px;
+  height: 453px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
-.cardBackground{
-    background-color: #D7E4FD;
-    text-align: center;
-    width: 352px;
-    height: 264px;
+.cardBackground {
+  background-color: #d7e4fd;
+  text-align: center;
+  width: 352px;
+  height: 264px;
 }
-.title{
-width: 335px;
-/* height: 55px; */
-font-family: 'Bebas Neue';
-font-style: normal;
-font-weight: 700;
-font-size: 24px;
-line-height: 32px;
-color: #313037;
-margin-bottom: 0;
+.title {
+  width: 335px;
+  /* height: 55px; */
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #313037;
+  margin-bottom: 0;
+}
+.text {
+  font-family: "Helios";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #a8a8a8;
+  margin: 0;
+}
 
+.price {
+  width: 53px;
+  height: 32px;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #313037;
+  margin: 0;
 }
-.text{
-font-family: 'Helios';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-color: #A8A8A8;
-margin: 0;
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
-.price{
-width: 53px;
-height: 32px;
-font-family: 'Bebas Neue';
-font-style: normal;
-font-weight: 700;
-font-size: 24px;
-line-height: 32px;
-color: #313037;
-margin: 0;
-}
-.info{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-}
-.img{
-    height: 264px;
+.img {
+  height: 264px;
 }

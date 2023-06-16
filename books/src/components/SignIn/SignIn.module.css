@@ -1,0 +1,44 @@
+.button {
+  width: 544px;
+  height: 56px;
+  background: #313037;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin: 40px auto 0 auto;
+  border: none;
+  transition: 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.form {
+  width: 544px;
+  border: 1px solid #e7e7e7;
+  margin: 100px auto 0 auto;
+  padding: 0 32px 40px 32px;
+}
+
+.a1 {
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 700;
+  width: 239px;
+  border: none;
+  background-color: white;
+  font-size: 24px;
+  text-align: center;
+}
+
+.li2:hover {
+  border-bottom: 1px solid black;
+}
+
+.li2 {
+  margin-left: 150px;
+}

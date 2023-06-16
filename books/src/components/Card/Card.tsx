@@ -1,7 +1,6 @@
-
 import React from "react";
 
-import { Book, Books } from "../../store/books/books.types";
+import { Book } from "../../store/books/books.types";
 import styles from "./Card.module.css";
 import Stars from "../Stars/Stars";
 import { NavLink } from "react-router-dom";
@@ -10,7 +9,7 @@ interface BookProps {
   link: string;
 }
 
-const BookOne: React.FC<BookProps> = ({book,link}) => {
+const BookOne: React.FC<BookProps> = ({ book, link }) => {
   return (
     <div className={styles.card}>
       <NavLink id={book.isbn13} to={link} style={{ textDecoration: "none" }}>

@@ -1,44 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-.title{
-    width: 137.51px;
-    height: 28.64px; 
-    font-family: 'Bebas Neue';
-    font-style: normal;
-    font-size: larger;
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+.title {
+  width: 137.51px;
+  height: 28.64px;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-size: larger;
 }
-.header{
-    width: 1120px;
-    height: 104px;
-    display: flex;
-    margin: 0 auto;
-    border-bottom: 1px solid  #E7E7E7;;
-    align-items: center;
-    justify-content: space-between;
-    
+.header {
+  width: 1120px;
+  height: 104px;
+  display: flex;
+  margin: 0 auto;
+  border-bottom: 1px solid #e7e7e7;
+  align-items: center;
+  justify-content: space-between;
 }
-.search{
-    width: 542px;
-    height: 56px;
-    background: #F7F7F7;
-    border: 1px solid #E7E7E7;
-    padding: 0 20px;
-    
+.search {
+  width: 542px;
+  height: 56px;
+  background: #f7f7f7;
+  border: 1px solid #e7e7e7;
+  padding: 0 20px;
 }
-.buttonSearch{
-position: absolute;
-border: none;
-margin:18px 0;
-right: 10px;
-background: #F7F7F7;
-cursor: pointer;
+.buttonSearch {
+  position: absolute;
+  border: none;
+  margin: 18px 0;
+  right: 10px;
+  background: #f7f7f7;
+  cursor: pointer;
 }
-.button{
-    width: 56px;
-    height: 56px;
-    border: none; 
-    background-color: #fff; 
-    cursor: pointer;
+.button {
+  width: 56px;
+  height: 56px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
 }
-.searchForm{
-    position: relative;
+.searchForm {
+  position: relative;
+}
+.point{
+  position: relative;
+  bottom: 15px;
+  right: 10px;
+
 }
